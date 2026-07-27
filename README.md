@@ -75,6 +75,30 @@ python svg2fruit.py            # svgs/*.svg → fruit_vec.json
 
 ---
 
+## demo-engine/ — 게임을 처음부터 다시 만드는 프롬프트
+
+영상에 나온 물리 시연을 **영상 편집 프로그램 없이** 재현하는 STEP 0~8 프롬프트입니다. AI 코딩 에이전트에 그대로 붙여넣습니다.
+The step-by-step prompts that rebuild the physics demo from scratch — paste them into an AI coding agent.
+
+**[demo-engine/PROMPTS.md](demo-engine/PROMPTS.md)** · 개요 = [demo-engine/README.md](demo-engine/README.md)
+
+| STEP | 내용 |
+|---|---|
+| 0~1 | 환경 · 과일 SVG → 정규화 큐빅 베지어 (이 저장소 자료로 대체 가능) |
+| 2 | planck.js 강체 물리를 고정 dt·고정 시드로 **오프라인 베이크** → 프레임 스냅샷 JSON |
+| 3 | **게임오버 라인 규약** — 판정 반경·착지 판정·보정 상한·머지 산물 스폰 상한 |
+| 4 | authored 클라이맥스(키스톤 사다리)와 클리어 캐스케이드 |
+| 5~6 | 캔버스 렌더러 · 시크 하네스 · Playwright 캡처 · ffmpeg mux |
+| 7~8 | 검증 게이트(결정론 SHA·라인·순간이동·육안) · 음악 비트락 · 다른 게임으로 교체 |
+
+게임 화면 전체가 **정수 프레임 f 하나만 받는 순수 함수**입니다(`window.__seekF(f)`). 그래서 같은 프레임은 언제 렌더해도 같은 픽셀입니다.
+
+### `extra/preview.html`
+`fruit_vec.json`을 Path2D로 재생해 눈으로 확인하는 뷰어. 회전은 프레임의 순수 함수라 슬라이더를 앞뒤로 훑어도 같은 f는 같은 그림입니다.
+`fetch`를 쓰므로 정적 서버로 여세요: `python -m http.server 8732` → `http://127.0.0.1:8732/extra/preview.html`
+
+---
+
 ## 라이선스 / License
 
 - **Noto Emoji 유래 8종** — Apache License 2.0. 전문 = [`LICENSE-Apache-2.0.txt`](LICENSE-Apache-2.0.txt), 출처·고지 = [`NOTICE.md`](NOTICE.md). 상업 이용 가능, 저작권 고지 유지 필요.
