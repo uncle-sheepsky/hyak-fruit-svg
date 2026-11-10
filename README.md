@@ -99,10 +99,20 @@ The step-by-step prompts that rebuild the physics demo from scratch — paste th
 
 ---
 
+## engine/ — 영상에 쓴 게임 코드
+
+마지막 판(v18)의 물리 베이크·렌더러·스냅샷·검사 스크립트를 그대로 올렸습니다. `cd engine && npm install && node verify.mjs` 로 물리를 다시 구워 대조할 수 있습니다. 코드는 CC0입니다.
+The final game code (physics bake, renderer, snapshot, check scripts), unchanged. Code is CC0.
+
+**[engine/README.md](engine/README.md)**
+
+---
+
 ## 라이선스 / License
 
 - **Noto Emoji 유래 8종** — Apache License 2.0. 전문 = [`LICENSE-Apache-2.0.txt`](LICENSE-Apache-2.0.txt), 출처·고지 = [`NOTICE.md`](NOTICE.md). 상업 이용 가능, 저작권 고지 유지 필요.
 - **직접 그린 3종 + `fruit_vec.json`의 해당 항목 + `svg2fruit.py`** — [CC0 1.0](LICENSE-CC0-1.0.txt) (퍼블릭 도메인 기증, 귀속 불필요).
+- **`engine/` 코드와 `suika_snaps.json`** — [CC0 1.0](LICENSE-CC0-1.0.txt). `engine/fruit_vec.json`은 `extra/fruit_vec.json`과 같은 기준(파일별 표는 [`NOTICE.md`](NOTICE.md)). planck.js(MIT)는 npm으로 받으며 포함하지 않았습니다.
 - `fruit_vec.json`의 Noto 유래 8종 항목은 원본의 2차 저작물이므로 **Apache-2.0**을 따릅니다.
 
 파일별 판정은 [`NOTICE.md`](NOTICE.md)에 표로 있습니다. / Per-file breakdown is in [`NOTICE.md`](NOTICE.md).

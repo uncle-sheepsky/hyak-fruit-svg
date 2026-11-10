@@ -39,3 +39,9 @@ Drawn by the @DURU-AI0503 channel. No attribution required.
 
 원본 작업 폴더에서는 자작 3종도 `noto_*.svg` 라는 이름을 달고 있었습니다(출처를 오도할 수 있는 이름). 이 저장소에서는 그 접두어를 떼고 티어 번호로 바꾸었습니다.
 In the working tree the three original drawings were also named `noto_*.svg`, which misrepresented their source. That prefix is removed here.
+
+## 4. engine/ — 영상에 쓴 게임 코드 (CC0 1.0)
+
+`engine/suika_bake.cjs` · `engine/suika_render.js` · `engine/suika_snaps.json` · `engine/check_*.py` · `engine/verify.mjs` · `engine/index.html` = CC0 1.0.
+`engine/fruit_vec.json`은 `extra/fruit_vec.json`의 위 표를 그대로 따릅니다. 추가로 들어 있는 잘린 수박(`watermelon`) 항목은 Noto Emoji 유래(Apache-2.0)입니다.
+의존성 planck.js는 MIT이고 저장소에 포함하지 않았습니다(`npm install`).

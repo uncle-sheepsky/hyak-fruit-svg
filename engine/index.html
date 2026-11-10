@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>수박게임 엔진 확인</title>
+<style>
+  body { margin: 0; background: #0d0b12; color: #e9e2ff; font: 14px/1.5 system-ui, sans-serif; }
+  #wrap { max-width: 480px; margin: 0 auto; padding: 16px; }
+  canvas { display: block; width: 100%; height: auto; background: #0d0b12; }
+  .row { display: flex; gap: 10px; align-items: center; margin: 10px 0; }
+  input[type=range] { flex: 1; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="cv" width="1080" height="1920"></canvas>
+  <div class="row">
+    <button id="play">재생</button>
+    <input id="fr" type="range" min="0" max="839" value="640">
+    <span id="lab"></span>
+  </div>
+  <p>프레임 번호만 받아서 그립니다. 앞뒤로 움직여도 같은 프레임은 같은 그림입니다. 정적 서버로 여세요(file:// 은 fetch 가 막힙니다).</p>
+</div>
+<script src="suika_render.js"></script>
+<script>
+  const cv = document.getElementById('cv'), ctx = cv.getContext('2d'), fr = document.getElementById('fr'), lab = document.getElementById('lab'), play = document.getElementById('play');
+  const draw = () => { const f = +fr.value; SUIKA.render(ctx, f); lab.textContent = 'f ' + f; };
+  let on = false;
+  const tick = () => { if (!on) return; fr.value = (+fr.value + 1) % (+fr.max + 1); draw(); requestAnimationFrame(tick); };
+  fr.addEventListener('input', draw);
+  play.addEventListener('click', () => { on = !on; play.textContent = on ? '멈춤' : '재생'; if (on) tick(); });
+  SUIKA.load(() => { fr.max = SUIKA.frames - 1; draw(); window.__ready = true; });
+  window.__seekF = f => { fr.value = f; draw(); };
+</script>
+</body>
+</html>
